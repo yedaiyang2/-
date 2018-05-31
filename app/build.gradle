@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.bw.arp.moni_demo"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    greendao {
+        schemaVersion 1  //版本
+        daoPackage 'com.bw.arp.moni_demo.greendemo' // 一般为app包名+生成文件的文件夹名
+        targetGenDir 'src/main/java' //生成文件路径
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //ButterKnife-依赖：
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    //Retrofit+Rxjava依赖：
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'io.reactivex:rxandroid:1.2.0'
+    //Glide
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    //fresco依赖:
+    compile 'com.facebook.fresco:fresco:+'
+    //fresco加载gif依赖:
+    compile 'com.facebook.fresco:animated-gif:+'
+    //拦截器
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+
+    compile 'org.greenrobot:greendao:3.1.0'
+    compile 'com.fynn.fluidlayout:fluidlayout:1.0'
+//刷新控件springview
+    compile 'com.liaoinstan.springview:library:1.2.6'
+}
